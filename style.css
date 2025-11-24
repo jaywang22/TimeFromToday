@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 25px; /* a little extra gap above buttons */
 }
 
 /* Number input */
@@ -48,22 +48,28 @@ button {
 
 /* Unit buttons (3 buttons) same total width as number buttons */
 #unitButtons {
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  justify-items: stretch;
 }
 
 /* Direction buttons (2 buttons) same total width as number buttons */
 #directionButtons {
-  display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  justify-items: stretch;
 }
 
 /* Result text */
 .result {
   font-size: 16px;
   margin-top: 10px;
+}
+
+/* Default light gray for unselected buttons */
+button:not(.selected) {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+/* Dark mode fallback */
+body.dark-mode button:not(.selected) {
+  background-color: #444;
+  color: #fff;
 }

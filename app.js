@@ -19,9 +19,11 @@ function setButtonStyle(btn, selected) {
   if (selected) {
     btn.style.backgroundColor = '#007AFF';
     btn.style.color = '#fff';
+    btn.classList.add('selected');
   } else {
-    btn.style.backgroundColor = isDarkMode ? '#444' : '#ccc';
+    btn.style.backgroundColor = isDarkMode ? '#444' : '#e0e0e0';
     btn.style.color = isDarkMode ? '#fff' : '#000';
+    btn.classList.remove('selected');
   }
 }
 
@@ -30,7 +32,7 @@ function setCopyButtonStyle(copied) {
     copyButton.style.backgroundColor = '#007AFF';
     copyButton.style.color = '#fff';
   } else {
-    copyButton.style.backgroundColor = isDarkMode ? '#555' : '#ccc';
+    copyButton.style.backgroundColor = isDarkMode ? '#555' : '#e0e0e0';
     copyButton.style.color = isDarkMode ? '#fff' : '#000';
   }
 }
@@ -110,18 +112,32 @@ function updateResult() {
 
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const verb = direction === 'after' ? 'is' : 'was';
+
+  // Pluralization
+  let displayUnit = unit;
+  if (amount === 1) displayUnit = unit.slice(0, -1);
+
   const dateString = finalDate.toLocaleDateString(undefined, options);
 
-  result.innerHTML = `${amount} ${unit} ${direction === 'after' ? 'from today' : 'before today'} ${verb}<br><strong>${dateString}</strong>`;
+  result.innerHTML = `${amount} ${displayUnit} ${direction === 'after' ? 'from today' : 'before today'} ${verb}<br><strong>${dateString}</strong>`;
 }
 
 // ===== Event Listeners =====
 numberInput.addEventListener('input', () => {
-  updateResult();
-  if (!numberInput.value && selectedButton) {
-    setButtonStyle(selectedButton, false);
-    selectedButton = null;
+  const value = parseInt(numberInput.value);
+
+  // Deselect previous button
+  if (selectedButton) setButtonStyle(selectedButton, false);
+  selectedButton = null;
+
+  // Highlight matching button
+  if (value >= 1 && value <= 20) {
+    const matchingBtn = buttonsContainer.children[value - 1]; // buttons 1-20
+    setButtonStyle(matchingBtn, true);
+    selectedButton = matchingBtn;
   }
+
+  updateResult();
   resetCopyButton();
 });
 
