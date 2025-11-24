@@ -34,7 +34,7 @@ button {
   cursor: pointer;
   margin: 3px;
   box-sizing: border-box;
-  height: 44px; /* uniform height */
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,18 +112,33 @@ button:active:not(.selected) {
   color: #fff;
 }
 
-/* Default very light gray for unselected buttons */
+/* Light mode unselected buttons */
 button:not(.selected) {
   background-color: #f0f0f0;
   color: #000;
 }
 
-/* Dark mode fallback */
+/* Dark mode: all buttons lighter gray */
 body.dark-mode button:not(.selected) {
-  background-color: #444;
+  background-color: #888; /* lighter gray */
   color: #fff;
 }
 
 body.dark-mode button:active:not(.selected) {
-  background-color: #555;
+  background-color: #aaa; /* pressed effect */
+}
+
+body.dark-mode #copyButton:not(.copied) {
+  background-color: #888;
+  color: #fff;
+}
+
+body.dark-mode #copyButton:active:not(.copied) {
+  background-color: #aaa;
+}
+
+/* Selected buttons (same in light & dark) */
+button.selected {
+  background-color: #007AFF;
+  color: #fff;
 }

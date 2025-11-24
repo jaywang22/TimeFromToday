@@ -21,7 +21,7 @@ function setButtonStyle(btn, selected) {
     btn.style.color = '#fff';
     btn.classList.add('selected');
   } else {
-    btn.style.backgroundColor = isDarkMode ? '#444' : '#f0f0f0';
+    btn.style.backgroundColor = isDarkMode ? '#888' : '#f0f0f0';
     btn.style.color = isDarkMode ? '#fff' : '#000';
     btn.classList.remove('selected');
   }
@@ -32,7 +32,7 @@ function setCopyButtonStyle(copied) {
     copyButton.style.backgroundColor = '#007AFF';
     copyButton.style.color = '#fff';
   } else {
-    copyButton.style.backgroundColor = isDarkMode ? '#555' : '#f0f0f0';
+    copyButton.style.backgroundColor = isDarkMode ? '#888' : '#f0f0f0';
     copyButton.style.color = isDarkMode ? '#fff' : '#000';
   }
 }
