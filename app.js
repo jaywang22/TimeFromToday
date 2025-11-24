@@ -14,6 +14,9 @@ let selectedUnit = 'weeks';
 let selectedDirection = 'after';
 const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+// ===== Apply dark mode class =====
+if (isDarkMode) document.body.classList.add('dark-mode');
+
 // ===== Helpers =====
 function setButtonStyle(btn, selected) {
   if (selected) {
