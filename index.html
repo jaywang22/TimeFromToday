@@ -11,9 +11,11 @@
   <!-- iPhone / iOS Home Screen Icon -->
   <link rel="apple-touch-icon" href="icon.png">
 
-  <!-- iOS / theme behavior -->
+  <!-- Optional: theme color behind icon and status bar -->
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#007AFF">
+
+  <!-- Prevent phone from zooming on input -->
   <meta name="format-detection" content="telephone=no">
 </head>
 <body>
@@ -23,16 +25,14 @@
     <!-- Number buttons grid -->
     <div id="buttons" class="buttons-grid"></div>
 
-    <!-- Manual number input -->
+    <!-- Manual number input (numeric keypad) -->
     <input
-  id="numberInput"
-  class="number-input"
-  type="tel"
-  inputmode="numeric"
-  pattern="[0-9]*"
-  placeholder="Enter number"
-  />
-
+      id="numberInput"
+      type="number"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      placeholder="Enter number"
+    >
 
     <!-- Unit buttons -->
     <div id="unitButtons"></div>
