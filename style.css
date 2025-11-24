@@ -99,7 +99,7 @@ button:active:not(.selected) {
   margin-top: 10px;
 }
 
-/* Light mode unselected buttons */
+/* Light mode unselected buttons (lighter grey) */
 button:not(.selected) {
   background-color: #f0f0f0;
   color: #000;
@@ -123,14 +123,14 @@ body.dark-mode .result {
   color: #fff;
 }
 
-/* Dark mode unselected buttons */
+/* Dark mode unselected buttons (darker grey) */
 body.dark-mode button:not(.selected) {
-  background-color: #888;
+  background-color: #666;
   color: #fff;
 }
 
 body.dark-mode button:active:not(.selected) {
-  background-color: #aaa;
+  background-color: #777;
 }
 
 /* Selected buttons */

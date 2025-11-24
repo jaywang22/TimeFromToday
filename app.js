@@ -24,7 +24,7 @@ function setButtonStyle(btn, selected) {
     btn.style.color = '#fff';
     btn.classList.add('selected');
   } else {
-    btn.style.backgroundColor = isDarkMode ? '#888' : '#f0f0f0';
+    btn.style.backgroundColor = isDarkMode ? '#666' : '#f0f0f0';
     btn.style.color = isDarkMode ? '#fff' : '#000';
     btn.classList.remove('selected');
   }
@@ -37,7 +37,7 @@ function setCopyButtonStyle(copied) {
     copyButton.classList.add('copied');
   } else {
     copyButton.classList.remove('copied');
-    copyButton.style.backgroundColor = isDarkMode ? '#888' : '#f0f0f0';
+    copyButton.style.backgroundColor = isDarkMode ? '#666' : '#f0f0f0';
     copyButton.style.color = isDarkMode ? '#fff' : '#000';
   }
 }
@@ -157,5 +157,12 @@ copyButton.addEventListener('click', () => {
     navigator.clipboard.writeText(strongTag.textContent);
     copyButton.textContent = 'Copied!';
     setCopyButtonStyle(true);
+  }
+});
+
+// ===== Dismiss keyboard when tapping outside input =====
+document.addEventListener('click', (e) => {
+  if (e.target !== numberInput) {
+    numberInput.blur();
   }
 });
