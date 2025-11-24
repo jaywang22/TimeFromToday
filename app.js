@@ -14,7 +14,7 @@ let selectedUnit = 'weeks';
 let selectedDirection = 'after';
 const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-// ===== Apply dark mode class =====
+// Apply dark mode class
 if (isDarkMode) document.body.classList.add('dark-mode');
 
 // ===== Helpers =====
@@ -24,7 +24,7 @@ function setButtonStyle(btn, selected) {
     btn.style.color = '#fff';
     btn.classList.add('selected');
   } else {
-    btn.style.backgroundColor = isDarkMode ? '#666' : '#f0f0f0';
+    btn.style.backgroundColor = isDarkMode ? 'rgba(142,142,147,0.3)' : 'rgba(142,142,147,0.3)';
     btn.style.color = isDarkMode ? '#fff' : '#000';
     btn.classList.remove('selected');
   }
@@ -37,7 +37,7 @@ function setCopyButtonStyle(copied) {
     copyButton.classList.add('copied');
   } else {
     copyButton.classList.remove('copied');
-    copyButton.style.backgroundColor = isDarkMode ? '#666' : '#f0f0f0';
+    copyButton.style.backgroundColor = isDarkMode ? 'rgba(142,142,147,0.3)' : 'rgba(142,142,147,0.3)';
     copyButton.style.color = isDarkMode ? '#fff' : '#000';
   }
 }
@@ -46,9 +46,6 @@ function resetCopyButton() {
   copyButton.textContent = 'Copy Result';
   setCopyButtonStyle(false);
 }
-
-// Initialize copy button style on page load
-setCopyButtonStyle(false);
 
 // ===== Number Buttons 1-20 =====
 for (let i = 1; i <= 20; i++) {

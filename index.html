@@ -3,41 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Time From Today</title>
-
-  <!-- Apple Home Screen / Web App Meta Tags -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="Time From Today">
-
-  <!-- Home screen icon -->
-  <link rel="apple-touch-icon" href="icon.png">
-
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <!-- Title -->
     <h1>Time From Today</h1>
 
-    <!-- Number buttons (1-20) -->
+    <!-- Number buttons grid -->
     <div id="buttons" class="buttons-grid"></div>
 
     <!-- Manual number input -->
-    <input type="number" id="numberInput" placeholder="Enter number" min="0" inputmode="numeric">
+    <input id="numberInput" type="number" placeholder="Enter number">
 
-    <!-- Unit buttons (Days / Weeks / Months) -->
-    <div id="unitButtons" class="buttons-grid"></div>
+    <!-- Unit buttons -->
+    <div id="unitButtons"></div>
 
-    <!-- Direction buttons (Before / After) -->
-    <div id="directionButtons" class="buttons-grid"></div>
+    <!-- Direction buttons -->
+    <div id="directionButtons"></div>
 
-    <!-- Result -->
-    <div id="result" class="result"></div>
+    <!-- Result text -->
+    <div id="result"></div>
 
     <!-- Copy button -->
     <button id="copyButton">Copy Result</button>
