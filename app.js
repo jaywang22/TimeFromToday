@@ -1,13 +1,20 @@
+// ===== Selectors =====
 const buttonsContainer = document.getElementById('buttons');
 const numberInput = document.getElementById('numberInput');
-const unitSelect = document.getElementById('unit');
-const directionSelect = document.getElementById('direction');
+const unitButtonsContainer = document.getElementById('unitButtons');
+const directionButtonsContainer = document.getElementById('directionButtons');
 const result = document.getElementById('result');
 const copyButton = document.getElementById('copyButton');
 
+// ===== State =====
 let selectedButton = null;
+const units = ['days', 'weeks', 'months'];
+const directions = ['before', 'after'];
+let selectedUnit = 'weeks';
+let selectedDirection = 'after';
 const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
+// ===== Helpers =====
 function setButtonStyle(btn, selected) {
   if (selected) {
     btn.style.backgroundColor = '#007AFF';
@@ -33,7 +40,7 @@ function resetCopyButton() {
   setCopyButtonStyle(false);
 }
 
-// Create number buttons 1-20
+// ===== Number Buttons 1-20 =====
 for (let i = 1; i <= 20; i++) {
   const btn = document.createElement('button');
   btn.textContent = i;
@@ -53,6 +60,35 @@ function updateButtonSelection(btn) {
   selectedButton = btn;
 }
 
+// ===== Unit Buttons =====
+units.forEach(unit => {
+  const btn = document.createElement('button');
+  btn.textContent = unit.charAt(0).toUpperCase() + unit.slice(1);
+  setButtonStyle(btn, unit === selectedUnit);
+  btn.onclick = () => {
+    selectedUnit = unit;
+    Array.from(unitButtonsContainer.children).forEach(b => setButtonStyle(b, b === btn));
+    updateResult();
+    resetCopyButton();
+  };
+  unitButtonsContainer.appendChild(btn);
+});
+
+// ===== Direction Buttons =====
+directions.forEach(dir => {
+  const btn = document.createElement('button');
+  btn.textContent = dir.charAt(0).toUpperCase() + dir.slice(1);
+  setButtonStyle(btn, dir === selectedDirection);
+  btn.onclick = () => {
+    selectedDirection = dir;
+    Array.from(directionButtonsContainer.children).forEach(b => setButtonStyle(b, b === btn));
+    updateResult();
+    resetCopyButton();
+  };
+  directionButtonsContainer.appendChild(btn);
+});
+
+// ===== Update Result =====
 function updateResult() {
   const amount = parseInt(numberInput.value);
   if (!amount) {
@@ -63,8 +99,8 @@ function updateResult() {
     return;
   }
 
-  const unit = unitSelect.value;
-  const direction = directionSelect.value;
+  const unit = selectedUnit;
+  const direction = selectedDirection;
   const today = new Date();
   let finalDate = new Date(today);
 
@@ -77,10 +113,9 @@ function updateResult() {
   const dateString = finalDate.toLocaleDateString(undefined, options);
 
   result.innerHTML = `${amount} ${unit} ${direction === 'after' ? 'from today' : 'before today'} ${verb}<br><strong>${dateString}</strong>`;
-  resetCopyButton();
 }
 
-// Event listeners
+// ===== Event Listeners =====
 numberInput.addEventListener('input', () => {
   updateResult();
   if (!numberInput.value && selectedButton) {
@@ -90,20 +125,9 @@ numberInput.addEventListener('input', () => {
   resetCopyButton();
 });
 
-unitSelect.addEventListener('change', () => {
-  updateResult();
-  resetCopyButton();
-});
-
-directionSelect.addEventListener('change', () => {
-  updateResult();
-  resetCopyButton();
-});
-
-// Copy result (only day and date)
+// ===== Copy Button =====
 copyButton.addEventListener('click', () => {
-  if (result.textContent.trim() === '') return;
-
+  if (!result.textContent.trim()) return;
   const strongTag = result.querySelector('strong');
   if (strongTag) {
     navigator.clipboard.writeText(strongTag.textContent);

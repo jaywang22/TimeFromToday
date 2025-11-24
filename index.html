@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Time From Today</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
 </head>
 <body>
   <div class="container">
@@ -14,24 +13,17 @@
     <!-- Number buttons -->
     <div id="buttons" class="buttons-grid"></div>
 
-    <!-- Manual input -->
-    <input type="number" id="numberInput" placeholder="Enter number">
+    <!-- Manual number input -->
+    <input type="number" id="numberInput" placeholder="Enter number" min="0">
 
-    <!-- Unit picker -->
-    <select id="unit">
-      <option value="days">Days</option>
-      <option value="weeks">Weeks</option>
-      <option value="months">Months</option>
-    </select>
+    <!-- Unit buttons -->
+    <div id="unitButtons" class="buttons-grid" style="margin-top: 20px;"></div>
 
-    <!-- Direction picker -->
-    <select id="direction">
-      <option value="after">After</option>
-      <option value="before">Before</option>
-    </select>
+    <!-- Direction buttons -->
+    <div id="directionButtons" class="buttons-grid" style="margin-top: 10px; margin-bottom: 20px;"></div>
 
     <!-- Result -->
-    <p id="result"></p>
+    <div id="result" class="result"></div>
 
     <!-- Copy button -->
     <button id="copyButton">Copy Result</button>
