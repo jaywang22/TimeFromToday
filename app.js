@@ -21,7 +21,7 @@ function setButtonStyle(btn, selected) {
     btn.style.color = '#fff';
     btn.classList.add('selected');
   } else {
-    btn.style.backgroundColor = isDarkMode ? '#444' : '#e0e0e0';
+    btn.style.backgroundColor = isDarkMode ? '#444' : '#f0f0f0';
     btn.style.color = isDarkMode ? '#fff' : '#000';
     btn.classList.remove('selected');
   }
@@ -32,13 +32,14 @@ function setCopyButtonStyle(copied) {
     copyButton.style.backgroundColor = '#007AFF';
     copyButton.style.color = '#fff';
   } else {
-    copyButton.style.backgroundColor = isDarkMode ? '#555' : '#e0e0e0';
+    copyButton.style.backgroundColor = isDarkMode ? '#555' : '#f0f0f0';
     copyButton.style.color = isDarkMode ? '#fff' : '#000';
   }
 }
 
 function resetCopyButton() {
   copyButton.textContent = 'Copy Result';
+  copyButton.classList.remove('copied');
   setCopyButtonStyle(false);
 }
 
@@ -132,7 +133,7 @@ numberInput.addEventListener('input', () => {
 
   // Highlight matching button
   if (value >= 1 && value <= 20) {
-    const matchingBtn = buttonsContainer.children[value - 1]; // buttons 1-20
+    const matchingBtn = buttonsContainer.children[value - 1];
     setButtonStyle(matchingBtn, true);
     selectedButton = matchingBtn;
   }
@@ -148,6 +149,6 @@ copyButton.addEventListener('click', () => {
   if (strongTag) {
     navigator.clipboard.writeText(strongTag.textContent);
     copyButton.textContent = 'Copied!';
-    setCopyButtonStyle(true);
+    copyButton.classList.add('copied');
   }
 });

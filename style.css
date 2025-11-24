@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-  margin-bottom: 25px; /* a little extra gap above buttons */
+  margin-bottom: 25px;
 }
 
 /* Number input */
@@ -20,51 +20,101 @@ input[type="number"] {
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  margin: 10px 0;
+  margin: 10px 0 15px 0;
   border-radius: 8px;
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
 
-/* Buttons */
+/* Buttons (number/unit/direction) */
 button {
-  padding: 10px;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  margin: 5px;
+  margin: 3px;
   box-sizing: border-box;
+  height: 44px; /* uniform height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
-/* Grid for number buttons (4 columns) */
+/* Hover effect */
+button:hover:not(.selected) {
+  background-color: #e6e6e6;
+}
+
+/* Pressed effect */
+button:active:not(.selected) {
+  transform: scale(0.97);
+  background-color: #dcdcdc;
+}
+
+/* Number buttons grid */
 .buttons-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 8px;
   justify-items: stretch;
   margin-bottom: 10px;
 }
 
-/* Unit buttons (3 buttons) same total width as number buttons */
+/* Unit buttons grid */
 #unitButtons {
   grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
 }
 
-/* Direction buttons (2 buttons) same total width as number buttons */
+/* Direction buttons grid */
 #directionButtons {
   grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 /* Result text */
 .result {
   font-size: 16px;
+  margin-top: 15px;
+}
+
+/* Copy button */
+#copyButton {
+  width: 100%;
+  height: 44px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
   margin-top: 10px;
 }
 
-/* Default light gray for unselected buttons */
+#copyButton:hover {
+  background-color: #e6e6e6;
+}
+
+#copyButton:active {
+  transform: scale(0.97);
+  background-color: #dcdcdc;
+}
+
+#copyButton.copied {
+  background-color: #007AFF;
+  color: #fff;
+}
+
+/* Default very light gray for unselected buttons */
 button:not(.selected) {
-  background-color: #e0e0e0;
+  background-color: #f0f0f0;
   color: #000;
 }
 
@@ -72,4 +122,8 @@ button:not(.selected) {
 body.dark-mode button:not(.selected) {
   background-color: #444;
   color: #fff;
+}
+
+body.dark-mode button:active:not(.selected) {
+  background-color: #555;
 }
