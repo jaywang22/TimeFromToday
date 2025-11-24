@@ -60,21 +60,21 @@ button {
 .buttons-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: 4px; /* Reduced spacing to match SwiftUI */
   justify-items: stretch;
 }
 
 #unitButtons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 8px; /* Slightly tighter than before */
   margin-top: 10px;
 }
 
 #directionButtons {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 8px; /* Slightly tighter */
   margin-top: 10px;
   margin-bottom: 20px;
 }
