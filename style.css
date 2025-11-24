@@ -15,6 +15,7 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* Number input */
 input[type="number"] {
   width: 100%;
   padding: 10px;
@@ -25,22 +26,43 @@ input[type="number"] {
   box-sizing: border-box;
 }
 
+/* Buttons */
 button {
   padding: 10px;
-  min-width: 60px;
-  margin: 5px;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
+  margin: 5px;
+  box-sizing: border-box;
 }
 
+/* Grid for number buttons (4 columns) */
 .buttons-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  justify-items: stretch;
+  margin-bottom: 10px;
 }
 
+/* Unit buttons (3 buttons) same total width as number buttons */
+#unitButtons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  justify-items: stretch;
+}
+
+/* Direction buttons (2 buttons) same total width as number buttons */
+#directionButtons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  justify-items: stretch;
+}
+
+/* Result text */
 .result {
   font-size: 16px;
   margin-top: 10px;
