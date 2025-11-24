@@ -26,7 +26,7 @@ input[type="number"] {
   box-sizing: border-box;
 }
 
-/* Buttons (number/unit/direction) */
+/* Buttons (number/unit/direction/copy) */
 button {
   border: none;
   border-radius: 8px;
@@ -53,7 +53,7 @@ button:active:not(.selected) {
   background-color: #dcdcdc;
 }
 
-/* Number buttons grid */
+/* Grid layouts */
 .buttons-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -62,14 +62,12 @@ button:active:not(.selected) {
   margin-bottom: 10px;
 }
 
-/* Unit buttons grid */
 #unitButtons {
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-top: 10px;
 }
 
-/* Direction buttons grid */
 #directionButtons {
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
@@ -98,36 +96,29 @@ button:active:not(.selected) {
   margin-top: 10px;
 }
 
-#copyButton:hover {
-  background-color: #e6e6e6;
-}
-
-#copyButton:active {
-  transform: scale(0.97);
-  background-color: #dcdcdc;
-}
-
-#copyButton.copied {
-  background-color: #007AFF;
-  color: #fff;
-}
-
 /* Light mode unselected buttons */
 button:not(.selected) {
   background-color: #f0f0f0;
   color: #000;
 }
 
-/* Dark mode: all buttons lighter gray */
+/* Dark mode unselected buttons */
 body.dark-mode button:not(.selected) {
   background-color: #888; /* lighter gray */
   color: #fff;
 }
 
 body.dark-mode button:active:not(.selected) {
-  background-color: #aaa; /* pressed effect */
+  background-color: #aaa;
 }
 
+/* Selected buttons (blue) */
+button.selected {
+  background-color: #007AFF;
+  color: #fff;
+}
+
+/* Copy button pressed effect in dark mode */
 body.dark-mode #copyButton:not(.copied) {
   background-color: #888;
   color: #fff;
@@ -137,8 +128,8 @@ body.dark-mode #copyButton:active:not(.copied) {
   background-color: #aaa;
 }
 
-/* Selected buttons (same in light & dark) */
-button.selected {
+/* Copy button copied state */
+#copyButton.copied {
   background-color: #007AFF;
   color: #fff;
 }

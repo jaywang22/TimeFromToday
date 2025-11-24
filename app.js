@@ -31,7 +31,9 @@ function setCopyButtonStyle(copied) {
   if (copied) {
     copyButton.style.backgroundColor = '#007AFF';
     copyButton.style.color = '#fff';
+    copyButton.classList.add('copied');
   } else {
+    copyButton.classList.remove('copied');
     copyButton.style.backgroundColor = isDarkMode ? '#888' : '#f0f0f0';
     copyButton.style.color = isDarkMode ? '#fff' : '#000';
   }
@@ -39,9 +41,11 @@ function setCopyButtonStyle(copied) {
 
 function resetCopyButton() {
   copyButton.textContent = 'Copy Result';
-  copyButton.classList.remove('copied');
   setCopyButtonStyle(false);
 }
+
+// Initialize copy button style on page load
+setCopyButtonStyle(false);
 
 // ===== Number Buttons 1-20 =====
 for (let i = 1; i <= 20; i++) {
@@ -149,6 +153,6 @@ copyButton.addEventListener('click', () => {
   if (strongTag) {
     navigator.clipboard.writeText(strongTag.textContent);
     copyButton.textContent = 'Copied!';
-    copyButton.classList.add('copied');
+    setCopyButtonStyle(true);
   }
 });
